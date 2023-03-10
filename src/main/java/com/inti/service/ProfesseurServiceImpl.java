@@ -12,21 +12,21 @@ import com.inti.util.HibernateUtil;
 @Service
 public class ProfesseurServiceImpl implements ProfesseurService {
 
-	private static Session s=HibernateUtil.getSessionFactory().openSession();
+	
 	
 	@Override
 	public List<Professeur> getProfesseurs() {
 		List<Professeur>listeP=null;
 		try {
-			s.beginTransaction();
+			EtudiantServiceImpl.s.beginTransaction();
 			
-			listeP= s.createNativeQuery("select * from professeur",Professeur.class).list();
+			listeP= EtudiantServiceImpl.s.createNativeQuery("select * from professeur",Professeur.class).list();
 			
 			
-			s.getTransaction().commit();
+			EtudiantServiceImpl.s.getTransaction().commit();
 			}catch(Exception e) {
 				e.printStackTrace();
-				s.getTransaction().rollback();
+				EtudiantServiceImpl.s.getTransaction().rollback();
 			}
 			return listeP;
 		}
@@ -35,14 +35,14 @@ public class ProfesseurServiceImpl implements ProfesseurService {
 	@Override
 	public void saveProfesseur(Professeur p) {
 		try {
-			s.beginTransaction();
+			EtudiantServiceImpl.s.beginTransaction();
 			
-			s.save(p);
+			EtudiantServiceImpl.s.save(p);
 			
-			s.getTransaction().commit();
+			EtudiantServiceImpl.s.getTransaction().commit();
 			}catch (Exception ex) {
 				ex.printStackTrace();
-				s.getTransaction().rollback();
+				EtudiantServiceImpl.s.getTransaction().rollback();
 			}
 	}
 
@@ -50,14 +50,14 @@ public class ProfesseurServiceImpl implements ProfesseurService {
 	public Professeur getProfesseur(int id) {
 		Professeur prof=null;
 		try {
-			s.beginTransaction();
+			EtudiantServiceImpl.s.beginTransaction();
 			
-			prof=s.get(Professeur.class, id);
+			prof=EtudiantServiceImpl.s.get(Professeur.class, id);
 			
-			s.getTransaction().commit();
+			EtudiantServiceImpl.s.getTransaction().commit();
 			}catch(Exception e) {
 				e.printStackTrace();
-				s.getTransaction().rollback();
+				EtudiantServiceImpl.s.getTransaction().rollback();
 			}
 			return prof;
 	
@@ -66,14 +66,14 @@ public class ProfesseurServiceImpl implements ProfesseurService {
 	@Override
 	public Professeur deleteProfesseur(int id) {
 		try {
-			s.beginTransaction();
+			EtudiantServiceImpl.s.beginTransaction();
 			
-			s.delete(s.get(Professeur.class, id));
+			EtudiantServiceImpl.s.delete(EtudiantServiceImpl.s.get(Professeur.class, id));
 			
-			s.getTransaction().commit();
+			EtudiantServiceImpl.s.getTransaction().commit();
 			}catch(Exception e) {
 				e.printStackTrace();
-				s.getTransaction().rollback();
+				EtudiantServiceImpl.s.getTransaction().rollback();
 			}
 		return null;
 	}

@@ -22,9 +22,9 @@ public class Professeur {
 	private String prenom;
 	private double salaire;
 	
-//	@ManyToMany
-//	@JoinTable(name="professeur_etudiant", joinColumns = @JoinColumn(name="idP"),inverseJoinColumns = @JoinColumn(name="idE"))
-//	private List<Etudiant>listeEtu;
+	@ManyToMany
+	@JoinTable(name="professeur_etudiant", joinColumns = @JoinColumn(name="idProf"),inverseJoinColumns = @JoinColumn(name="idEtu"))
+	List<Etudiant>listeEtu;
 	
 	public Professeur() {
 		super();

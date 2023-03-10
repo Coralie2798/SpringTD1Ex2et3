@@ -26,11 +26,11 @@ public class ProfesseurController {
 	}
 	
 	@PostMapping("saveProfAvecForm")
-	public String enregistrerEtu(@ModelAttribute("prof") Professeur p, Model m)
+	public String enregistrerProf(@ModelAttribute("prof") Professeur p)
 	{
 		ps.saveProfesseur(p);
-		m.addAttribute("p", p);
-		return "enregistrerP";
+		
+		return "redirect:/professeur/inscriptionP";
 	}
 	
 

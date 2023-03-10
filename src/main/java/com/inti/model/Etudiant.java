@@ -23,9 +23,9 @@ public class Etudiant {
 	private String tel;
 	private String mail;
 	
-//	@ManyToMany
-//	@JoinTable(name="professeur_etudiant", joinColumns = @JoinColumn(name="idE"),inverseJoinColumns = @JoinColumn(name="idP"))
-//	private List<Professeur>listeProf;
+	@ManyToMany
+	@JoinTable(name="professeur_etudiant", joinColumns = @JoinColumn(name="idEtu"),inverseJoinColumns = @JoinColumn(name="idProf"))
+	List<Professeur>listeProf;
 
 	
 

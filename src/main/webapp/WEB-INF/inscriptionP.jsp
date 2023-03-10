@@ -30,7 +30,7 @@
 		
 		<div class="mb-3">
 			<label for="exampleInputEmail1" class="form-label">Salaire</label> 
-			<input type="number" name="salaire" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+			<input type="text" name="salaire" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
 		</div>
 		
 		
